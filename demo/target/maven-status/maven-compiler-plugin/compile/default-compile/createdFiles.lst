@@ -1,0 +1,5 @@
+application.properties
+com\example\demo\DemoApplication.class
+com\example\demo\Score.class
+com\example\demo\ScoreController.class
+com\example\demo\Student.class
