@@ -43,9 +43,9 @@ public class PostController {
 
     @PutMapping("/post/{id}/like")
     public ResponseEntity<Post> incrementLikes(@PathVariable int id) {
-        int updated = postRepository.incrementLikes(id);
+        int newLikes = postRepository.incrementLikes(id);
 
-        if (updated == 0) {
+        if (newLikes == 0) {
             return ResponseEntity.notFound().build();
         }
         return postRepository.findById(id)
