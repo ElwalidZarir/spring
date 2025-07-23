@@ -39,30 +39,18 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}")
-    public ResponseEntity<Post> getUserById(@PathVariable int id) {
-        return postService.getPostById(id).map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<Post> getPostById(@PathVariable int id) {
+        return postService.getPostById(id);
     }
 
     @GetMapping("/posts/{id}/likes")
     public ResponseEntity<Integer> getlikes(@PathVariable int id) {
-        Optional<Post> postOptional = postRepository.findById(id);
-        if (postOptional.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(postOptional.get().getLikes());
+        return postService.getLikesById(id);
     }
 
     @PutMapping("/posts/{id}/like")
     public ResponseEntity<Post> incrementLikes(@PathVariable int id) {
-        int newLikes = postRepository.incrementLikes(id);
-
-        if (newLikes == 0) {
-            return ResponseEntity.notFound().build();
-        }
-        return postRepository.findById(id)
-                .map(post -> ResponseEntity.ok(post))
-                .orElse(ResponseEntity.internalServerError().build());
+        return postService.incremtLikes(id);
 
         /*
          * Optional<Post> postOptional = postRepository.findById(id);
@@ -70,7 +58,7 @@ public class PostController {
          * return ResponseEntity.notFound().build();
          * }
          * Post post = postOptional.get();
-         * post.setLikes(post.getLikes() + 1);
+         * post.setLikes(post.getLikes() + 1); // not thread-safe
          * postRepository.save(post);
          * 
          * return ResponseEntity.ok(post);
