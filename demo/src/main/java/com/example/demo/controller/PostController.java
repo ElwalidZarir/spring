@@ -8,13 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.PostDto;
 import com.example.demo.model.Post;
+import com.example.demo.model.User;
 import com.example.demo.repository.PostRepository;
+import com.example.demo.service.PostService;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import java.util.Optional;
+
+import java.util.*;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,17 +26,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PostController {
     @Autowired
     private PostRepository postRepository;
+    private PostService postService;
 
-    @PostMapping("/post")
-    public Post createPost(@RequestBody PostDto postDTO) {
-        Post post = new Post();
-        post.setOwner(postDTO.getOwner());
-        post.setText(postDTO.getText());
-        post.setLikes(0);
-        return postRepository.save(post);
+    @GetMapping("/posts")
+    public List<Post> getPosts() {
+        return postService.getAllPosts();
     }
 
-    @GetMapping("/post/{id}/likes")
+    @PostMapping("/posts")
+    public Post createPost(@RequestBody PostDto postDTO) {
+        return postService.createPost(postDTO);
+    }
+
+    @GetMapping("/posts/{id}")
+    public ResponseEntity<Post> getUserById(@PathVariable int id) {
+        return postService.getPostById(id).map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/posts/{id}/likes")
     public ResponseEntity<Integer> getlikes(@PathVariable int id) {
         Optional<Post> postOptional = postRepository.findById(id);
         if (postOptional.isEmpty()) {
@@ -41,7 +53,7 @@ public class PostController {
         return ResponseEntity.ok(postOptional.get().getLikes());
     }
 
-    @PutMapping("/post/{id}/like")
+    @PutMapping("/posts/{id}/like")
     public ResponseEntity<Post> incrementLikes(@PathVariable int id) {
         int newLikes = postRepository.incrementLikes(id);
 
