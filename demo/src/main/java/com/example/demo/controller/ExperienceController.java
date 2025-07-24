@@ -39,7 +39,7 @@ public class ExperienceController {
     }
 
     @PutMapping("/profiles/{id}/experiences")
-    public List<Experience> editExperiences(@PathVariable int id, @RequestBody List<ExperienceDTO> experienceDTOs) {
+    public List<Experience> updateExperiences(@PathVariable int id, @RequestBody List<ExperienceDTO> experienceDTOs) {
         return experienceService.updateExperiences(id, experienceDTOs);
     }
 

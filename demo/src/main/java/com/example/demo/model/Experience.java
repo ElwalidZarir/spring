@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -27,4 +29,8 @@ public class Experience {
     @JoinColumn(name = "profile_id")
     @JsonIgnore
     private Profile profile;
+
+    @ManyToMany()
+    @JoinTable(name="experience_skills", joinColumns = @JoinColumn(name="experience_id"), inverseJoinColumns = @JoinColumn(name="skill_id"))
+    private List<Skill> skills;
 }
