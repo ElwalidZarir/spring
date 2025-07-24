@@ -30,16 +30,10 @@ public class UserController {
         User user = new User(userDto.getEmail(), userDto.getUsername());
         return userRepository.save(user);
     }
-
-    @GetMapping("/users")
-    public List<User> getUers() {
-        return userRepository.findAll();
-    }
     
     @DeleteMapping("/users/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable int id){
+    public void deleteUser(@PathVariable int id){
         userRepository.deleteById(id);
-        return ResponseEntity.ok("User deleted successfuly");
     }
 
     

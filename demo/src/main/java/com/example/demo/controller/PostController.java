@@ -25,13 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 public class PostController {
     @Autowired
-    private PostRepository postRepository;
     private PostService postService;
-
-    @GetMapping("/posts")
-    public List<Post> getPosts() {
-        return postService.getAllPosts();
-    }
 
     @PostMapping("/posts")
     public Post createPost(@RequestBody PostDto postDTO) {

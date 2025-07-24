@@ -5,18 +5,16 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.PostDto;
 import com.example.demo.model.Post;
 import com.example.demo.repository.PostRepository;
 
+@Service
 public class PostService {
     @Autowired
     private PostRepository postRepository;
-
-    public List<Post> getAllPosts() {
-        return postRepository.findAll();
-    }
 
     public ResponseEntity<Post> getPostById(int id) {
         return postRepository.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());

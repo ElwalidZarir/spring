@@ -1,15 +1,19 @@
 package com.example.demo;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @CrossOrigin
 public class ScoreController {
-    static Score score = new Score(30, 20, 10);
+    static Score score = new Score();
 
     @GetMapping("/health-check")
     public String getHealthCheck() {
@@ -21,21 +25,27 @@ public class ScoreController {
         return score;
     }
 
-    @PostMapping("/score/win")
+    @PostMapping("/score/wins")
     public Score increasWin() {
-        score.wins++;
+        score.getTies().incrementAndGet();
         return score;
     }
 
-    @GetMapping("/score/{endpoint}")
-    public int getEndPoint(@PathVariable String endpoint) {
-        if (endpoint.equals("wins")) {
-            return score.wins;   
-        } else if (endpoint.equals("ties")) {
-            return score.ties;
-        } else {
-            return score.losses;
-        }
+    @GetMapping("/score/wins")
+    public AtomicInteger getwins() {
+        return score.wins;
     }
+
+    @GetMapping("/score/losses")
+    public AtomicInteger getLosses() {
+        return score.losses;
+    }
+
+    @GetMapping("/score/ties")
+    public AtomicInteger getTies() {
+        return score.ties;
+    }
+    
+    
 
 }

@@ -1,40 +1,23 @@
 package com.example.demo;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Score {
-    int wins;
-    int ties;
-    int losses;
+     AtomicInteger wins = new AtomicInteger(30);
+     AtomicInteger ties = new AtomicInteger(20);
+     AtomicInteger losses = new AtomicInteger(10);
 
     public Score() {
     }
 
-    public Score(int wins, int ties, int losses) {
+    public Score(AtomicInteger wins, AtomicInteger ties, AtomicInteger losses) {
         this.wins = wins;
         this.ties = ties;
-        this.losses = losses;
-    }
-
-    public int getWins() {
-        return wins;
-    }
-
-    public void setWins(int wins) {
-        this.wins = wins;
-    }
-
-    public int getTies() {
-        return ties;
-    }
-
-    public void setTies(int ties) {
-        this.ties = ties;
-    }
-
-    public int getLosses() {
-        return losses;
-    }
-
-    public void setLosses(int losses) {
         this.losses = losses;
     }
 }
