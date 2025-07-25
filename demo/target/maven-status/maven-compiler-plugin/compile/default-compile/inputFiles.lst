@@ -5,13 +5,16 @@ C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\controller
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\controller\ProfileController.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\controller\UserController.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\DemoApplication.java
+C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\dto\ExperienceDTO.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\dto\PostDto.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\dto\ProfileDTO.java
+C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\dto\SkillDTO.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\dto\UserDTO.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\model\Experience.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\model\Group.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\model\Post.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\model\Profile.java
+C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\model\Skill.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\model\User.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\repository\ExperienceRepository.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\repository\GroupRepository.java
@@ -20,6 +23,6 @@ C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\repository
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\repository\UserRepository.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\Score.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\ScoreController.java
+C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\service\ExperienceService.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\service\PostService.java
 C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\service\ProfileService.java
-C:\Users\zassy\Downloads\demo (1)\demo\src\main\java\com\example\demo\Student.java
