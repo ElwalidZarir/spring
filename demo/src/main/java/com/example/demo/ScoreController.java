@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 @CrossOrigin
 public class ScoreController {
-    static Score score = new Score();
+    static Score score = new Score(new AtomicInteger(30),new AtomicInteger(20),new AtomicInteger(1));
 
     @GetMapping("/health-check")
     public String getHealthCheck() {
@@ -27,23 +27,23 @@ public class ScoreController {
 
     @PostMapping("/score/wins")
     public Score increasWin() {
-        score.getTies().incrementAndGet();
+        score.ties().incrementAndGet();
         return score;
     }
 
     @GetMapping("/score/wins")
     public AtomicInteger getwins() {
-        return score.wins;
+        return score.wins();
     }
 
     @GetMapping("/score/losses")
     public AtomicInteger getLosses() {
-        return score.losses;
+        return score.losses();
     }
 
     @GetMapping("/score/ties")
     public AtomicInteger getTies() {
-        return score.ties;
+        return score.ties();
     }
     
     
