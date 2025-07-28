@@ -16,9 +16,7 @@ public class ProfileService {
 
     public Profile createProfile(ProfileDTO profileDto){
         Profile profile = new Profile();
-        profile.setBio(profileDto.getBio());
+        profile.setBio(profileDto.bio());
         return profileRepository.save(profile);
     }
-
-    
 }

@@ -2,6 +2,7 @@ com\example\demo\DemoApplication.class
 com\example\demo\repository\ExperienceRepository.class
 com\example\demo\controller\PostController.class
 com\example\demo\dto\ExperienceDTO.class
+com\example\demo\dto\PostDTO.class
 com\example\demo\repository\ProfileRepository.class
 com\example\demo\repository\UserRepository.class
 com\example\demo\model\Group.class
@@ -18,7 +19,6 @@ com\example\demo\model\Skill.class
 com\example\demo\model\User.class
 com\example\demo\ScoreController.class
 com\example\demo\dto\SkillDTO.class
-com\example\demo\dto\PostDto.class
 com\example\demo\controller\ExperienceController.class
 com\example\demo\controller\GroupController.class
 com\example\demo\dto\ProfileDTO.class

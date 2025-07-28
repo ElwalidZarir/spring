@@ -24,30 +24,15 @@ public class ExperienceService {
         Profile profile = profileRepository.findById(profileId)
                 .orElseThrow(() -> new RuntimeException("Profile not found"));
         Experience experience = new Experience();
-        experience.setJobTitle(experienceDto.getJobTitle());
+        experience.setJobTitle(experienceDto.jobTitle());
         experience.setProfile(profile);
         return experienceRepository.save(experience);
     }
 
-    public Experience updatExperience(int experienceId, ExperienceDTO experienceDto) {
+    public Experience updateExperience(int experienceId, ExperienceDTO experienceDto) {
         Experience experience = experienceRepository.findById(experienceId)
                 .orElseThrow(() -> new RuntimeException("Experience not found"));
-        experience.setJobTitle(experienceDto.getJobTitle());
+        experience.setJobTitle(experienceDto.jobTitle());
         return experienceRepository.save(experience);
-    }
-
-    public List<Experience> updateExperiences(int profileId, List<ExperienceDTO> experienceDtos) {
-        Profile profile = profileRepository.findById(profileId)
-                .orElseThrow(() -> new RuntimeException("Profile not found"));
-        List<Experience> newExperiences = experienceDtos.stream()
-                .map(dto -> {
-                    Experience exp = new Experience();
-                    exp.setJobTitle(dto.getJobTitle());
-                    exp.setProfile(profile);
-                    return exp;
-                })
-                .collect(Collectors.toList());
-        return experienceRepository.saveAll(newExperiences);
-
     }
 }

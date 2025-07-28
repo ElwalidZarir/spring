@@ -1,0 +1,5 @@
+ALTER TABLE profile
+ADD COLUMN user_id INT NOT NULL UNIQUE;
+
+ALTER TABLE profile
+ADD CONSTRAINT fk_profile_user FOREIGN KEY (user_id) REFERENCES user(id);

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.dto.PostDto;
+import com.example.demo.dto.PostDTO;
 import com.example.demo.model.Post;
 import com.example.demo.model.User;
 import com.example.demo.repository.PostRepository;
@@ -28,7 +28,7 @@ public class PostController {
     private PostService postService;
 
     @PostMapping("/posts")
-    public Post createPost(@RequestBody PostDto postDTO) {
+    public Post createPost(@RequestBody PostDTO postDTO) {
         return postService.createPost(postDTO);
     }
 
@@ -45,18 +45,6 @@ public class PostController {
     @PutMapping("/posts/{id}/like")
     public ResponseEntity<Post> incrementLikes(@PathVariable int id) {
         return postService.incremtLikes(id);
-
-        /*
-         * Optional<Post> postOptional = postRepository.findById(id);
-         * if (postOptional.isEmpty()) {
-         * return ResponseEntity.notFound().build();
-         * }
-         * Post post = postOptional.get();
-         * post.setLikes(post.getLikes() + 1); // not thread-safe
-         * postRepository.save(post);
-         * 
-         * return ResponseEntity.ok(post);
-         */
 
     }
 

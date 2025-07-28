@@ -17,7 +17,9 @@ import jakarta.persistence.ManyToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode
 @Getter
 @Entity
 @Setter
@@ -34,6 +36,6 @@ public class Group {
     private String title;
 
     @ManyToMany(mappedBy = "groups")
-    private List<User> users;
+    private List<Profile> profiles;
 
 }

@@ -9,9 +9,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode
 @Entity
 @Getter
 @Setter
@@ -23,4 +26,7 @@ public class Skill {
 
     @ManyToMany(mappedBy = "skills")
     private List<Experience> experiences;
+
+    @ManyToOne
+    private Profile profile;
 }

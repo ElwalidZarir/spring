@@ -15,7 +15,9 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode
 @Entity
 @Setter
 @Getter
@@ -25,7 +27,7 @@ public class Experience {
     private int id;
     private String jobTitle;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "profile_id")
     @JsonIgnore
     private Profile profile;

@@ -32,15 +32,16 @@ public class ExperienceController {
         return experienceService.createExperience(id, experienceDto);
     }
 
-    @PutMapping("/experiences/{experieceId}") // "/profiles/{profileId}/experiences/{experieceId}" is this better?? to
-                                              // ask
+    @PutMapping("/profiles/{profileId}/experiences/{experieceId}")
     public Experience updaExperience(@PathVariable int experieceId, @RequestBody ExperienceDTO experienceDto) {
-        return experienceService.updatExperience(experieceId, experienceDto);
+        return experienceService.updateExperience(experieceId, experienceDto);
     }
 
+    
+/* 
     @PutMapping("/profiles/{id}/experiences")
     public List<Experience> updateExperiences(@PathVariable int id, @RequestBody List<ExperienceDTO> experienceDTOs) {
         return experienceService.updateExperiences(id, experienceDTOs);
-    }
+    } */
 
 }

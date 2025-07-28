@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dto.PostDto;
+import com.example.demo.dto.PostDTO;
 import com.example.demo.model.Post;
 import com.example.demo.repository.PostRepository;
 
@@ -20,10 +20,9 @@ public class PostService {
         return postRepository.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    public Post createPost(PostDto postDto) {
+    public Post createPost(PostDTO postDto) {
         Post post = new Post();
-        post.setOwner(postDto.getOwner());
-        post.setText(postDto.getText());
+        post.setText(postDto.text());
         return postRepository.save(post);
     }
 
